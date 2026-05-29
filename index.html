@@ -1,0 +1,472 @@
+<!--
+  ============================================================================
+  Harish Balasubramanian, personal site (GitHub Pages)
+  ============================================================================
+  HOW TO PUBLISH:
+    1. Create a repo named  harish2102.github.io
+    2. Drop this file in as  index.html
+    3. Commit + push. Live at  https://harish2102.github.io
+
+  STILL TO FILL IN:
+    - CV PDF .............. upload your resume PDF to this repo; the CV button
+                           currently points at ./Harish_Balasubramanian_CV.pdf
+                           (rename the file or this link so they match)
+    - "Code · in progress" links on 4 cards (Cortical Denoising, Incubator-Safe
+                           Microscope, CoREAM SegNet, Medhive) — swap in repo
+                           URLs once those repos are public.
+  ============================================================================
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Harish Balasubramanian, Biomedical Imaging & AI</title>
+<meta name="description" content="Harish Balasubramanian, biomedical engineer working where instrumentation meets machine learning: fluorescence-microscopy hardware, deep-learning denoising and segmentation, and edge-deployable clinical models.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#FAF7F1;
+    --paper-2:#F3EEE5;
+    --card:#FFFFFF;
+    --ink:#15201E;
+    --ink-soft:#4C5A57;
+    --ink-faint:#7C8A86;
+    --teal:#0E6E6B;
+    --teal-deep:#0A4F4D;
+    --coral:#D9533B;
+    --line:rgba(21,32,30,.12);
+    --line-soft:rgba(21,32,30,.07);
+    --shadow:0 1px 2px rgba(21,32,30,.04),0 8px 28px rgba(21,32,30,.06);
+    --maxw:820px;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth;scroll-padding-top:84px}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:"IBM Plex Sans",system-ui,sans-serif;
+    font-size:16.5px;
+    line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+    text-rendering:optimizeLegibility;
+  }
+  body::before{
+    content:"";position:fixed;inset:0;z-index:-2;
+    background-image:radial-gradient(rgba(21,32,30,.05) 1px,transparent 1px);
+    background-size:26px 26px;
+    -webkit-mask-image:radial-gradient(ellipse 80% 60% at 50% 0%,#000 30%,transparent 80%);
+            mask-image:radial-gradient(ellipse 80% 60% at 50% 0%,#000 30%,transparent 80%);
+  }
+  a{color:var(--teal-deep);text-decoration:none;border-bottom:1px solid rgba(14,110,107,.3);transition:color .15s,border-color .15s}
+  a:hover{color:var(--coral);border-color:var(--coral)}
+
+  /* ---------- nav ---------- */
+  nav{
+    position:sticky;top:0;z-index:50;
+    backdrop-filter:saturate(140%) blur(10px);
+    background:rgba(250,247,241,.82);
+    border-bottom:1px solid var(--line-soft);
+  }
+  .nav-inner{
+    max-width:var(--maxw);margin:0 auto;padding:14px 24px;
+    display:flex;align-items:center;justify-content:space-between;gap:16px;
+  }
+  .nav-name{font-family:"Fraunces",serif;font-weight:600;font-size:18px;letter-spacing:.2px;border:none}
+  .nav-name:hover{color:var(--ink)}
+  .nav-links{display:flex;gap:22px;font-family:"IBM Plex Mono",monospace;font-size:12.5px;letter-spacing:.04em;text-transform:uppercase}
+  .nav-links a{border:none;color:var(--ink-soft);position:relative;padding:4px 0}
+  .nav-links a::after{content:"";position:absolute;left:0;bottom:0;height:2px;width:0;background:var(--teal);transition:width .22s}
+  .nav-links a:hover,.nav-links a.active{color:var(--ink)}
+  .nav-links a.active::after,.nav-links a:hover::after{width:100%}
+  @media(max-width:640px){.nav-links{display:none}}
+
+  /* ---------- layout ---------- */
+  main{max-width:var(--maxw);margin:0 auto;padding:0 24px 96px}
+  section{padding-top:64px}
+  .eyebrow{
+    font-family:"IBM Plex Mono",monospace;font-size:12px;letter-spacing:.18em;
+    text-transform:uppercase;color:var(--teal);margin:0 0 18px;
+    display:flex;align-items:center;gap:12px;
+  }
+  .eyebrow::after{content:"";flex:1;height:1px;background:var(--line)}
+  h2.section-title{font-family:"Fraunces",serif;font-weight:600;font-size:30px;line-height:1.1;margin:0 0 28px;letter-spacing:-.01em}
+
+  /* ---------- hero ---------- */
+  header.hero{padding-top:72px}
+  .hero h1{
+    font-family:"Fraunces",serif;font-weight:600;font-size:clamp(40px,7vw,62px);
+    line-height:1.02;letter-spacing:-.02em;margin:0 0 6px;
+  }
+  .hero .role{
+    font-family:"IBM Plex Mono",monospace;font-size:14px;letter-spacing:.04em;
+    color:var(--teal-deep);text-transform:uppercase;margin:0 0 26px;
+  }
+  .hero .role b{color:var(--coral);font-weight:500}
+  .hero .bio{font-size:18px;max-width:64ch;color:var(--ink);margin:0 0 14px}
+  .hero .bio.sub{font-size:16.5px;color:var(--ink-soft);max-width:66ch}
+  .hero .bio a{font-weight:500}
+  .linkrow{display:flex;flex-wrap:wrap;gap:10px;margin-top:30px}
+  .linkrow a{
+    border:1px solid var(--line);background:var(--card);border-radius:999px;
+    padding:8px 16px;font-size:13.5px;font-weight:500;color:var(--ink);
+    display:inline-flex;align-items:center;gap:8px;box-shadow:var(--shadow);
+    transition:transform .15s,border-color .15s,color .15s;
+  }
+  .linkrow a:hover{transform:translateY(-2px);border-color:var(--teal);color:var(--teal-deep)}
+  .linkrow svg{width:15px;height:15px;flex:none}
+
+  /* ---------- highlights / news ---------- */
+  .news{list-style:none;padding:0;margin:0;border-top:1px solid var(--line)}
+  .news li{
+    display:grid;grid-template-columns:120px 1fr;gap:18px;align-items:baseline;
+    padding:14px 0;border-bottom:1px solid var(--line-soft);
+  }
+  .news .when{font-family:"IBM Plex Mono",monospace;font-size:12.5px;color:var(--ink-faint);letter-spacing:.02em}
+  .news .what b{font-weight:600}
+  .news .tag{color:var(--coral);font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.06em;text-transform:uppercase;margin-right:8px}
+  @media(max-width:560px){.news li{grid-template-columns:1fr;gap:2px}}
+
+  /* ---------- projects ---------- */
+  .project{padding:26px 0;border-bottom:1px solid var(--line)}
+  .project:first-of-type{border-top:1px solid var(--line)}
+  .p-head{display:flex;flex-wrap:wrap;align-items:baseline;gap:8px 14px;margin-bottom:8px}
+  .p-title{font-family:"Fraunces",serif;font-weight:600;font-size:22px;line-height:1.15;letter-spacing:-.01em}
+  .p-meta{font-family:"IBM Plex Mono",monospace;font-size:11.5px;color:var(--ink-faint);letter-spacing:.03em;text-transform:uppercase}
+  .p-impact{color:var(--ink);font-weight:500;margin:0 0 6px}
+  .p-impact::before{content:"\2192  ";color:var(--coral);font-weight:600}
+  .p-detail{color:var(--ink-soft);font-size:15px;margin:0 0 12px}
+  .tags{display:flex;flex-wrap:wrap;gap:6px;margin:10px 0 12px}
+  .tags span{
+    font-family:"IBM Plex Mono",monospace;font-size:10.5px;letter-spacing:.03em;
+    color:var(--teal-deep);background:rgba(14,110,107,.08);
+    border:1px solid rgba(14,110,107,.16);border-radius:6px;padding:3px 8px;
+  }
+  .p-links{display:flex;flex-wrap:wrap;gap:16px;font-family:"IBM Plex Mono",monospace;font-size:12.5px;letter-spacing:.02em}
+  .p-links a{border:none;display:inline-flex;align-items:center;gap:5px;color:var(--teal-deep)}
+  .p-links a:hover{color:var(--coral)}
+  .p-links a svg{width:13px;height:13px}
+  .p-links .soon{color:var(--ink-faint)}
+
+  /* ---------- experience timeline ---------- */
+  .xp{border-left:2px solid var(--line);margin-left:6px;padding-left:24px}
+  .xp .job{position:relative;padding-bottom:26px}
+  .xp .job:last-child{padding-bottom:0}
+  .xp .job::before{content:"";position:absolute;left:-31px;top:6px;width:11px;height:11px;border-radius:50%;background:var(--paper);border:2px solid var(--teal)}
+  .xp .job.now::before{background:var(--coral);border-color:var(--coral);box-shadow:0 0 0 4px rgba(217,83,59,.15)}
+  .xp .j-top{display:flex;flex-wrap:wrap;justify-content:space-between;gap:6px;align-items:baseline}
+  .xp .j-role{font-weight:600;font-size:16.5px}
+  .xp .j-org{color:var(--teal-deep);font-weight:500}
+  .xp .j-when{font-family:"IBM Plex Mono",monospace;font-size:12px;color:var(--ink-faint);letter-spacing:.02em}
+  .xp .j-desc{color:var(--ink-soft);font-size:15px;margin:4px 0 0}
+
+  /* ---------- publications ---------- */
+  .pub{padding:16px 0;border-bottom:1px solid var(--line-soft)}
+  .pub:first-child{border-top:1px solid var(--line)}
+  .pub .pt{font-weight:600}
+  .pub .pv{color:var(--ink-soft);font-size:14.5px}
+  .pub .pv .venue{color:var(--teal-deep);font-style:italic}
+  .pub .pl{font-family:"IBM Plex Mono",monospace;font-size:12px;margin-top:4px}
+  .pub .pl a{border:none}
+
+  /* ---------- skills ---------- */
+  .skills{display:grid;grid-template-columns:repeat(2,1fr);gap:22px}
+  .skillcard{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:20px 22px;box-shadow:var(--shadow)}
+  .skillcard h3{font-family:"IBM Plex Mono",monospace;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--teal);margin:0 0 12px;display:flex;align-items:center;gap:9px}
+  .skillcard h3 svg{width:16px;height:16px}
+  .chips{display:flex;flex-wrap:wrap;gap:7px}
+  .chips span{font-size:13px;color:var(--ink);background:var(--paper);border:1px solid var(--line);border-radius:7px;padding:4px 10px}
+  @media(max-width:560px){.skills{grid-template-columns:1fr}}
+
+  /* ---------- beyond ---------- */
+  .beyond p{max-width:66ch;color:var(--ink-soft)}
+  .beyond .placeholder{background:rgba(217,83,59,.06);border:1px dashed var(--coral);border-radius:8px;padding:12px 16px;font-size:13.5px;color:var(--coral)}
+
+  /* ---------- footer ---------- */
+  footer{max-width:var(--maxw);margin:0 auto;padding:36px 24px 60px;border-top:1px solid var(--line);text-align:center;color:var(--ink-faint);font-size:13.5px}
+  footer a{color:var(--ink-soft)}
+  footer .fl{display:flex;justify-content:center;gap:20px;flex-wrap:wrap;margin-bottom:14px;font-family:"IBM Plex Mono",monospace;font-size:12.5px}
+
+  /* reveal */
+  .reveal{opacity:0;transform:translateY(14px);transition:opacity .6s ease,transform .6s ease}
+  .reveal.in{opacity:1;transform:none}
+  @media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="#top" class="nav-name">Harish Balasubramanian</a>
+    <div class="nav-links">
+      <a href="#work">Work</a>
+      <a href="#experience">Experience</a>
+      <a href="#publications">Papers</a>
+      <a href="#skills">Skills</a>
+      <a href="#beyond">Beyond</a>
+    </div>
+  </div>
+</nav>
+
+<main>
+  <!-- ===================== HERO ===================== -->
+  <header class="hero" id="top">
+    <h1>Harish Balasubramanian</h1>
+    <p class="role">Biomedical Imaging <b>&times;</b> AI <b>&times;</b> Embedded Systems</p>
+    <p class="bio">I am a biomedical engineer who likes to stay close to the hardware. Most of my work lives where instrumentation meets machine learning: I build the imaging tools that capture biological data, then design the models that turn that data into something a researcher or clinician can actually use. What I care about is the whole path, from a raw signal or a microscopy frame all the way through to a result that holds up when someone depends on it, and I want to keep working across that full stack rather than inside a single silo.</p>
+    <p class="bio sub">I am an M.S.E. Biomedical Engineering candidate at <a href="https://www.jhu.edu/">Johns Hopkins University</a> (GPA 3.87) and a Research Assistant in the <a href="https://www.hopkinsmedicine.org/">Pathak Lab</a> at the School of Medicine. I am currently an AI Intern at HDMedical, bringing hospital-grade cardiac screening to handheld devices.</p>
+
+    <div class="linkrow">
+      <a href="mailto:hbalasu2@jhu.edu">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>Email</a>
+      <!-- TODO: upload resume PDF to this repo; rename file or link so they match -->
+      <a href="./Harish_Balasubramanian_CV.pdf">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 3v5h5"/><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/></svg>CV</a>
+      <a href="https://www.linkedin.com/in/harishb2102/">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2zM8.34 18.34V9.99H5.67v8.35zM7 8.8a1.55 1.55 0 1 0 0-3.1 1.55 1.55 0 0 0 0 3.1m11.34 9.54v-4.57c0-2.45-1.31-3.59-3.06-3.59a2.64 2.64 0 0 0-2.39 1.32v-1.13H10.2v8.35h2.67v-4.41c0-1.16.22-2.29 1.66-2.29 1.42 0 1.44 1.33 1.44 2.36v4.34z"/></svg>LinkedIn</a>
+      <a href="https://github.com/Harish2102">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2A10 10 0 0 0 8.84 21.5c.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02a9.6 9.6 0 0 1 5 0c1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5A10 10 0 0 0 12 2"/></svg>GitHub</a>
+      <a href="https://scholar.google.com/citations?user=_vE4mIwAAAAJ&amp;hl=en">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 3 1 9l11 6 9-4.91V17h2V9zM5 13.18v4L12 21l7-3.82v-4L12 17z"/></svg>Scholar</a>
+    </div>
+  </header>
+
+  <!-- ===================== HIGHLIGHTS ===================== -->
+  <section id="news">
+    <p class="eyebrow">Recent</p>
+    <ul class="news">
+      <li><span class="when">Feb 2026</span><span class="what"><b>Started as AI Intern at HDMedical Group</b> (Santa Clara, CA), bringing hospital-grade arrhythmia screening to a handheld 7-lead ECG+PCG device.</span></li>
+      <li><span class="when">2025</span><span class="what"><span class="tag">Talk</span>Abstract accepted at the <b>Alavi&ndash;Bradley Symposium on Molecular Imaging &amp; Theranostics</b>: deep learning preserves functional connectivity in low-light cortical imaging.</span></li>
+      <li><span class="when">Summer 2025</span><span class="what">R&amp;D Intern at <b>Xenco Medical</b>, where I built an in-silico bone-graft model replicating 12-week in-vivo trends with 95% agreement.</span></li>
+      <li><span class="when">2024</span><span class="what">Began M.S.E. at <b>Johns Hopkins University</b> and joined the Pathak Lab at the School of Medicine.</span></li>
+      <li><span class="when">2023</span><span class="what"><span class="tag">Grant</span>Awarded a <b>$25,000 IEEE AESS DSTEI Global Grant</b> for an autonomous UAV&ndash;ground-robot system for precision agriculture.</span></li>
+    </ul>
+  </section>
+
+  <!-- ===================== SELECTED WORK ===================== -->
+  <section id="work">
+    <p class="eyebrow">Selected Work</p>
+    <h2 class="section-title">Things I&rsquo;ve built, and why they matter</h2>
+
+    <!-- 1. Cortical denoising -->
+    <article class="project">
+      <div class="p-head"><span class="p-title">Deep-Learning Cortical Denoising</span><span class="p-meta">Pathak Lab, JHU &middot; 2024&ndash;present</span></div>
+      <p class="p-impact">Removes the need for phototoxic high-intensity illumination, enabling long-term imaging of freely-behaving mice that would otherwise damage living tissue.</p>
+      <p class="p-detail">Trained Pix2Pix-GAN and SwinIR models for super-resolved cortical denoising (44&nbsp;dB PSNR, 99.2% SSIM), and proved the denoised stacks fully preserve functional connectivity and vascular dynamics, validating the method for miniscope-compatible, low-light in-vivo imaging.</p>
+      <div class="tags"><span>Pix2Pix-GAN</span><span>SwinIR</span><span>self-supervised</span><span>in-vivo microscopy</span><span>PyTorch</span></div>
+      <div class="p-links">
+        <a href="https://www.medschool.umaryland.edu/media/som/departments/diagnostic-radiology/documents/alavi/List-of-2025-Abstracts.pdf#page=36"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 3v5h5M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/></svg>Abstract</a>
+        <a class="soon">Code &middot; in progress</a>
+      </div>
+    </article>
+
+    <!-- 2. Incubator-safe microscope -->
+    <article class="project">
+      <div class="p-head"><span class="p-title">Incubator-Safe Wireless Fluorescence Microscope</span><span class="p-meta">Pathak Lab, JHU</span></div>
+      <p class="p-impact">Images tumor cells and brain organoids continuously, inside the incubator, without ever breaking sterility or disrupting cell viability.</p>
+      <p class="p-detail">A wireless Raspberry-Pi microscope with electrowetting-lens (EWL) autofocus and CAD-modeled optomechanics, driven by register-level I2C control of a MAX14574 driver and operated through a remote GUI. Built from concept to a working instrument used in active cancer-cell imaging experiments.</p>
+      <div class="tags"><span>Raspberry Pi</span><span>electrowetting optics</span><span>I2C / MAX14574</span><span>CAD / optomechanics</span><span>Python</span></div>
+      <div class="p-links">
+        <a class="soon">Code &middot; in progress</a>
+      </div>
+    </article>
+
+    <!-- 3. CoREAM SegNet -->
+    <article class="project">
+      <div class="p-head"><span class="p-title">CoREAM SegNet</span><span class="p-meta">JHU &middot; Dr. Vishal Patel</span></div>
+      <p class="p-impact">Beats transformer baselines while using a fraction of the compute, making real-time medical segmentation viable on hardware you can actually deploy in a clinic.</p>
+      <p class="p-detail">A compact CNN&ndash;Attention hybrid with multi-scale feature fusion that scored 2% higher DICE and mIoU than transformer models across EndoVis2018, LiTS2017, and BraTS2020.</p>
+      <div class="tags"><span>CNN&ndash;Attention</span><span>multi-scale fusion</span><span>real-time segmentation</span><span>PyTorch</span></div>
+      <div class="p-links">
+        <a class="soon">Code &middot; in progress</a>
+      </div>
+    </article>
+
+    <!-- 4. Gesture recognition -->
+    <article class="project">
+      <div class="p-head"><span class="p-title">Multimodal Acoustic&ndash;Ultrasonic Gesture Recognition</span><span class="p-meta">JHU &middot; Dr. Andreas Andreou</span></div>
+      <p class="p-impact">Touchless, on-device control for sterile or busy clinical environments, with no surfaces to contaminate, all running on a microcontroller.</p>
+      <p class="p-detail">Fuses passive acoustic (25&nbsp;kHz) and active ultrasonic (40&ndash;50&nbsp;kHz) reflections through a multi-head-attention CNN, then quantizes to a 94&nbsp;kB TFLite model deployed on an Arduino Nano under strict memory and latency constraints.</p>
+      <div class="tags"><span>TinyML</span><span>TFLite</span><span>multi-head attention</span><span>Arduino Nano</span><span>edge AI</span></div>
+      <div class="p-links">
+        <a href="https://github.com/Harish2102/multimodal-acoustic-gesture-recognition"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2A10 10 0 0 0 8.84 21.5c.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02a9.6 9.6 0 0 1 5 0c1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5A10 10 0 0 0 12 2"/></svg>Code</a>
+      </div>
+    </article>
+
+    <!-- 5. Xenco CPM -->
+    <article class="project">
+      <div class="p-head"><span class="p-title">In-Silico Bone-Graft Model</span><span class="p-meta">Xenco Medical &middot; Summer 2025</span></div>
+      <p class="p-impact">Replaces costly animal experiments with simulation, letting graft formulations be screened in-silico before anyone touches a benchtop.</p>
+      <p class="p-detail">A first-of-its-kind agent-based Cellular Potts Model of multicellular bone regeneration, built in CompuCell3D, that reproduced 12-week in-vivo femoral graft trends with 95% agreement by mapping porosity, osteoconductivity, and resorption rate to tissue outcomes.</p>
+      <div class="tags"><span>Cellular Potts Model</span><span>CompuCell3D</span><span>agent-based simulation</span><span>scaffold design</span><span>Python</span></div>
+      <div class="p-links">
+        <a href="https://github.com/Harish2102/CPM-Model-for-Femoral-Data-Study-Xenco-Medical"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2A10 10 0 0 0 8.84 21.5c.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02a9.6 9.6 0 0 1 5 0c1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5A10 10 0 0 0 12 2"/></svg>Code</a>
+      </div>
+    </article>
+
+    <!-- 6. HDsense tactile glove -->
+    <article class="project">
+      <div class="p-head"><span class="p-title">HDsense: High-Density Tactile Glove</span><span class="p-meta">JHU &middot; Advanced Instruments &amp; Systems, R. Sathappan</span></div>
+      <p class="p-impact">Brings fine-grained, low-latency touch feedback to prosthetics and wearables, the kind of resolution that makes haptics feel real.</p>
+      <p class="p-detail">A two-layer flex-PCB glove packing 1024 tactile sensors, designed in KiCad and read out with compressed sensing to keep latency low at high density.</p>
+      <div class="tags"><span>flex-PCB</span><span>KiCad</span><span>compressed sensing</span><span>embedded firmware</span><span>haptics</span></div>
+      <div class="p-links">
+        <a href="https://github.com/Harish2102/hdsense-glove"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2A10 10 0 0 0 8.84 21.5c.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02a9.6 9.6 0 0 1 5 0c1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5A10 10 0 0 0 12 2"/></svg>Code</a>
+      </div>
+    </article>
+
+    <!-- 7. ASL-to-Speech glove -->
+    <article class="project">
+      <div class="p-head"><span class="p-title">ASL-to-Speech Glove</span><span class="p-meta">JHU &middot; Biomedical Instrumentation, Dr. Thakor</span></div>
+      <p class="p-impact">Turns American Sign Language into spoken words in real time, giving non-signers an instant way to understand a signer.</p>
+      <p class="p-detail">A wearable glove fusing 5 flex sensors and a BMI270 IMU over I2C, with Arduino BLE Nano firmware streaming both static and dynamic gestures wirelessly to a Python GUI (Tkinter + pyttsx3) for live text and speech synthesis. Reaches 95% static and 90% dynamic recognition accuracy.</p>
+      <div class="tags"><span>flex sensors</span><span>BMI270 IMU</span><span>Arduino BLE</span><span>sensor fusion</span><span>Python GUI</span></div>
+      <div class="p-links">
+        <a href="https://github.com/Harish2102/asl-gesture-glove"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2A10 10 0 0 0 8.84 21.5c.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02a9.6 9.6 0 0 1 5 0c1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5A10 10 0 0 0 12 2"/></svg>Code</a>
+      </div>
+    </article>
+
+    <!-- 8. EOG controller -->
+    <article class="project">
+      <div class="p-head"><span class="p-title">Assistive Biogaming: EOG &amp; Velostat Game Controller</span><span class="p-meta">JHU &middot; Biomedical Instrumentation, Dr. Thakor</span></div>
+      <p class="p-impact">Lets people with motor impairments, such as ALS patients, play Minecraft hands-free using only eye movements and foot pressure.</p>
+      <p class="p-detail">A custom EOG analog front-end (INA128 instrumentation amp, HPF/LPF chain, total gain&nbsp;605) detects blinks and eyebrow raises for movement and jumping, while Velostat foot-pressure sensors handle camera control, all driven by embedded-C++ firmware on Arduino emulating keyboard input.</p>
+      <div class="tags"><span>electrooculography</span><span>INA128 AFE</span><span>Velostat sensors</span><span>embedded C++</span><span>accessibility</span></div>
+      <div class="p-links">
+        <a href="https://github.com/Harish2102/eog-biogaming-controller"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2A10 10 0 0 0 8.84 21.5c.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02a9.6 9.6 0 0 1 5 0c1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5A10 10 0 0 0 12 2"/></svg>Code</a>
+      </div>
+    </article>
+
+    <!-- 9. Medhive -->
+    <article class="project">
+      <div class="p-head"><span class="p-title">Medhive.ai</span><span class="p-meta">Early-stage prototype &middot; 2026</span></div>
+      <p class="p-impact">Exploring whether structured knowledge graphs can make medical-device and regulatory data genuinely queryable and reasoning-capable.</p>
+      <p class="p-detail">Prototyping Neo4j knowledge-graph representations and GraphRAG-style retrieval to support early-stage regulatory decision-making with LLMs.</p>
+      <div class="tags"><span>knowledge graphs</span><span>Neo4j</span><span>GraphRAG</span><span>LLMs</span></div>
+      <div class="p-links">
+        <a class="soon">Code &middot; in progress</a>
+      </div>
+    </article>
+
+    <!-- 10. Drone -->
+    <article class="project">
+      <div class="p-head"><span class="p-title">Smart-Agriculture UAV &amp; Ground-Robot System</span><span class="p-meta">IEEE AESS DSTEI &middot; B.Tech thesis</span></div>
+      <p class="p-impact">Cuts chemical waste and field labor with targeted, autonomous pesticide delivery, the work that won a $25,000 IEEE grant.</p>
+      <p class="p-detail">Led an AI-enabled UAV&ndash;ground-robot system; built 2&nbsp;kg and 5&nbsp;kg prototypes (T/W&nbsp;&gt;&nbsp;2.3) with A*+RRT LiDAR navigation for autonomous targeting.</p>
+      <div class="tags"><span>UAV / robotics</span><span>A*+RRT</span><span>LiDAR navigation</span><span>precision agriculture</span></div>
+      <div class="p-links">
+        <a href="https://ieee-aess.org/files/ieeeaess/2023-05/AES_Spring23_DSTEI_Davis.pdf"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 0 0 7 0l3-3a5 5 0 0 0-7-7l-1 1"/><path d="M14 11a5 5 0 0 0-7 0l-3 3a5 5 0 0 0 7 7l1-1"/></svg>Grant</a>
+        <a href="https://github.com/Harish2102/drones-for-smart-agriculture"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2A10 10 0 0 0 8.84 21.5c.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02a9.6 9.6 0 0 1 5 0c1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5A10 10 0 0 0 12 2"/></svg>Code</a>
+      </div>
+    </article>
+  </section>
+
+
+  <!-- ===================== EXPERIENCE ===================== -->
+  <section id="experience">
+    <p class="eyebrow">Experience</p>
+    <h2 class="section-title">Where I&rsquo;ve worked</h2>
+    <div class="xp">
+      <div class="job now">
+        <div class="j-top"><span><span class="j-role">AI Intern</span> &middot; <span class="j-org">HDMedical Group</span></span><span class="j-when">Feb 2026 &ndash; Present &middot; Santa Clara, CA</span></div>
+        <p class="j-desc">Trained a BiLSTM reaching 99% AFib and 89% murmur detection on the HD&nbsp;Steth, and adapted ECG-FM (wav2vec&nbsp;2.0) to a 7-lead handheld ECG+PCG device via random lead masking, bringing hospital-grade arrhythmia classification to point-of-care use with LLM-generated clinical reports versioned through CI/CD.</p>
+      </div>
+      <div class="job now">
+        <div class="j-top"><span><span class="j-role">Research Assistant</span> &middot; <span class="j-org">Pathak Lab, JHU School of Medicine</span></span><span class="j-when">Oct 2024 &ndash; Present &middot; Baltimore, MD</span></div>
+        <p class="j-desc">Imaging instrumentation and AI: cortical denoising (Pix2Pix-GAN, SwinIR), a wireless incubator-safe microscope, and CellPose / DeepWonder pipelines for automated cell segmentation and tumor tracking across in-vivo stacks.</p>
+      </div>
+      <div class="job">
+        <div class="j-top"><span><span class="j-role">Teaching Assistant</span> &middot; <span class="j-org">Johns Hopkins University</span></span><span class="j-when">Aug 2025 &ndash; Dec 2025</span></div>
+        <p class="j-desc">TA for Biomedical Instrumentation (Dr. Thakor), guiding 30+ students through analog front-end design and biosignal acquisition; and for AI Systems (Dr. Dredze), coaching teams on deployable, human-centered AI.</p>
+      </div>
+      <div class="job">
+        <div class="j-top"><span><span class="j-role">Biomedical Engineering Intern</span> &middot; <span class="j-org">Xenco Medical</span></span><span class="j-when">May 2025 &ndash; Aug 2025 &middot; San Diego, CA</span></div>
+        <p class="j-desc">Built a first-of-its-kind Cellular Potts Model of multicellular bone regeneration, replicating 12-week in-vivo graft trends with 95% agreement, enabling in-silico screening of graft formulations and reducing reliance on animal experiments.</p>
+      </div>
+      <div class="job">
+        <div class="j-top"><span><span class="j-role">Research Intern</span> &middot; <span class="j-org">IIT Bombay</span></span><span class="j-when">Jan 2023 &ndash; Jun 2023 &middot; Mumbai, India</span></div>
+        <p class="j-desc">Designed an Electrical Impedance Tomography PCB and trained a radial-basis autoencoder for inverse conductivity reconstruction in lung phantoms, a low-cost, radiation-free alternative to CT for bedside pulmonary monitoring.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== PUBLICATIONS ===================== -->
+  <section id="publications">
+    <p class="eyebrow">Publications</p>
+    <h2 class="section-title">Papers &amp; preprints</h2>
+    <div class="pub">
+      <div class="pt">Deep Learning Preserves Functional Connectivity in Low-Light In-Vivo Cortical Imaging</div>
+      <div class="pv"><span class="venue">Alavi&ndash;Bradley Symposium on Molecular Imaging &amp; Theranostics</span>, 2025</div>
+      <div class="pl"><a href="https://www.medschool.umaryland.edu/media/som/departments/diagnostic-radiology/documents/alavi/List-of-2025-Abstracts.pdf#page=36">Abstract &rarr;</a></div>
+    </div>
+    <div class="pub">
+      <div class="pt">ML-based Detection of COVID-19, Pneumonia, and Tuberculosis from Chest X-Rays</div>
+      <div class="pv"><span class="venue">arXiv preprint</span>, 2023</div>
+      <div class="pl"><a href="https://arxiv.org/abs/2310.06080">arXiv:2310.06080 &rarr;</a></div>
+    </div>
+  </section>
+
+  <!-- ===================== SKILLS ===================== -->
+  <section id="skills">
+    <p class="eyebrow">Toolkit</p>
+    <h2 class="section-title">Skills</h2>
+    <div class="skills">
+      <div class="skillcard">
+        <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><circle cx="12" cy="12" r="8"/></svg>Imaging &amp; Microscopy</h3>
+        <div class="chips"><span>Fluorescence microscopy</span><span>In-vivo / volumetric imaging</span><span>Medical image segmentation</span><span>CellPose</span><span>DeepWonder</span><span>ImageJ / Fiji</span><span>DICOM</span><span>MIPAV</span></div>
+      </div>
+      <div class="skillcard">
+        <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a4 4 0 0 0-4 4v1a3 3 0 0 0 0 6 4 4 0 0 0 8 0 3 3 0 0 0 0-6V6a4 4 0 0 0-4-4z"/></svg>Machine Learning</h3>
+        <div class="chips"><span>PyTorch</span><span>TensorFlow</span><span>Transformers (ViT, SwinIR)</span><span>GANs</span><span>Self-supervised (MAE, wav2vec&nbsp;2.0)</span><span>Foundation-model fine-tuning</span><span>Time-series</span></div>
+      </div>
+      <div class="skillcard">
+        <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M9 9h6v6H9zM2 9h2M2 15h2M20 9h2M20 15h2M9 2v2M15 2v2M9 20v2M15 20v2"/></svg>Embedded &amp; Hardware</h3>
+        <div class="chips"><span>STM32 / Arduino / Raspberry Pi</span><span>KiCad / Altium</span><span>PCB &amp; flex-PCB design</span><span>Analog front-end (AFE)</span><span>I2C / SPI / UART</span><span>Driver bring-up</span><span>TinyML / TFLite / TensorRT</span><span>Electrowetting optics</span></div>
+      </div>
+      <div class="skillcard">
+        <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m8 6-6 6 6 6M16 6l6 6-6 6"/></svg>Languages &amp; Tools</h3>
+        <div class="chips"><span>Python</span><span>C / C++</span><span>MATLAB</span><span>Java</span><span>OpenCV</span><span>Git</span><span>Docker</span><span>CI/CD (GitHub Actions)</span><span>AWS / GCP</span><span>Neo4j</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== BEYOND ===================== -->
+  <section id="beyond" class="beyond">
+    <p class="eyebrow">Beyond the Lab</p>
+    <h2 class="section-title">Away from the bench</h2>
+    <p>When I am not looking at cells under a microscope or tuning a model, I am usually making music or outdoors. I sing and play both electric and acoustic guitar, I am a keen table tennis player, and I trek whenever I get the chance.</p>
+  </section>
+</main>
+
+<footer>
+  <div class="fl">
+    <a href="mailto:hbalasu2@jhu.edu">hbalasu2@jhu.edu</a>
+    <a href="https://www.linkedin.com/in/harishb2102/">LinkedIn</a>
+    <a href="https://github.com/Harish2102">GitHub</a>
+  </div>
+  Baltimore, Maryland
+</footer>
+
+<script>
+  const links=[...document.querySelectorAll('.nav-links a')];
+  const obs=new IntersectionObserver((es)=>{
+    es.forEach(e=>{
+      if(e.isIntersecting){
+        const id=e.target.id;
+        links.forEach(l=>l.classList.toggle('active',l.getAttribute('href')==='#'+id));
+      }
+    });
+  },{rootMargin:'-45% 0px -50% 0px'});
+  document.querySelectorAll('main section[id], header#top').forEach(s=>obs.observe(s));
+
+  document.querySelectorAll('section, .project, .skillcard, .pub, .news li').forEach(el=>el.classList.add('reveal'));
+  const rev=new IntersectionObserver((es)=>{
+    es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');rev.unobserve(e.target);}});
+  },{rootMargin:'0px 0px -8% 0px'});
+  document.querySelectorAll('.reveal').forEach(el=>rev.observe(el));
+</script>
+</body>
+</html>
