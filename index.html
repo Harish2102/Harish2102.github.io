@@ -118,6 +118,13 @@
   }
   .linkrow a:hover{transform:translateY(-2px);border-color:var(--teal);color:var(--teal-deep)}
   .linkrow svg{width:15px;height:15px;flex:none}
+  .hero-grid{display:grid;grid-template-columns:1fr 240px;gap:44px;align-items:start}
+  .hero-photo{aspect-ratio:3/4;border-radius:16px;overflow:hidden;border:1px solid var(--line);box-shadow:var(--shadow)}
+  .hero-photo img{width:100%;height:100%;object-fit:cover;display:block}
+  @media(max-width:680px){
+    .hero-grid{grid-template-columns:1fr;gap:22px}
+    .hero-photo{order:-1;width:150px;border-radius:14px;margin-bottom:2px}
+  }
 
   /* ---------- highlights / news ---------- */
   .news{list-style:none;padding:0;margin:0;border-top:1px solid var(--line)}
@@ -214,6 +221,8 @@
 <main>
   <!-- ===================== HERO ===================== -->
   <header class="hero" id="top">
+    <div class="hero-grid">
+      <div class="hero-text">
     <h1>Harish Balasubramanian</h1>
     <p class="role">Biomedical Imaging <b>&times;</b> AI <b>&times;</b> Embedded Systems</p>
     <p class="bio">I am a biomedical engineer who likes to stay close to the hardware. Most of my work lives where instrumentation meets machine learning: I build the imaging tools that capture biological data, then design the models that turn that data into something a researcher or clinician can actually use. What I care about is the whole path, from a raw signal or a microscopy frame all the way through to a result that holds up when someone depends on it, and I want to keep working across that full stack rather than inside a single silo.</p>
@@ -231,6 +240,11 @@
         <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2A10 10 0 0 0 8.84 21.5c.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02a9.6 9.6 0 0 1 5 0c1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5A10 10 0 0 0 12 2"/></svg>GitHub</a>
       <a href="https://scholar.google.com/citations?user=_vE4mIwAAAAJ&amp;hl=en">
         <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 3 1 9l11 6 9-4.91V17h2V9zM5 13.18v4L12 21l7-3.82v-4L12 17z"/></svg>Scholar</a>
+    </div>
+      </div>
+      <div class="hero-photo">
+        <img src="./profile_photo.jpg" alt="Harish Balasubramanian" width="660" height="880" loading="eager">
+      </div>
     </div>
   </header>
 
